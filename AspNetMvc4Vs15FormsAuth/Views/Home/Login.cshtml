@@ -1,0 +1,45 @@
+﻿@model AspNetMvc4Vs15FormsAuth.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LoginModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remember)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remember)
+            @Html.ValidationMessageFor(model => model.Remember)
+        </div>
+
+        <p>
+            <input type="submit" value="Login" />
+        </p>
+    </fieldset>
+}

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/bundles/styles")
+
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("Scripts", false)
+</head>
+<body>
+<header>
+    Bem-vindo @(Request.IsAuthenticated ? User.Description : "visitante")
+</header>
+
+<nav>
+    <ul>
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        @if (Request.IsAuthenticated)
+        {
+            <li><a href="@Url.Action("Logout", "Home")">Sair</a></li>
+        }
+    </ul>
+</nav>
+
+<section id="content">
+    @RenderBody()
+</section>
+
+<footer>
+    Footer
+</footer>
+</body>
+</html>
